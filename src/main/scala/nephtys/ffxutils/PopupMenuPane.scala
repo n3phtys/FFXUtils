@@ -200,6 +200,7 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
   }
   //not needed: private var passiveHandlers : Array[(String, Object => Unit)] = Array.empty
 
+  PopupMenuPane.addWeakReference(id, this)
 }
 
 //all drinks, give out, statistics

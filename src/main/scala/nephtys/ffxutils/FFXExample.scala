@@ -33,7 +33,8 @@ class FFXExample extends javafx.application.Application{
           ("Button #2", "second active object"),
           ("Button #3", "third active object")
         )}
-        popuppane.showPopupThreadsafe(btn.localToScene(btn.getBoundsInLocal).getMinX, btn.localToScene(btn.getBoundsInLocal).getMinY, f, "Some title", "this is an object" )
+        PopupMenuPane.showPopupThreadsafe(POPUPMENU_ID, btn.localToScene(btn.getBoundsInLocal).getMinX, btn.localToScene(btn.getBoundsInLocal).getMinY, f, "Some title", "this is an object" )
+        //popuppane.showPopupThreadsafe(btn.localToScene(btn.getBoundsInLocal).getMinX, btn.localToScene(btn.getBoundsInLocal).getMinY, f, "Some title", "this is an object" )
       }
     })
 
