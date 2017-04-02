@@ -221,6 +221,10 @@ object PopupMenuPane {
     }
   }
 
+  def showPopupThreadsafe(popupId : String, fromNode : Node, buttons : Future[Array[(String, Object)]], title : String, firstObjectType : Object) : Unit = {
+    showPopupThreadsafe(popupId, fromNode.localToScene(fromNode.getBoundsInLocal).getMinX, fromNode.localToScene(fromNode.getBoundsInLocal).getMinY, buttons, title, firstObjectType)
+  }
+
   def closePopupThreadsafe(popupId: String): Unit = {
     val p = _panes.get(popupId)
     if (p != null) {
