@@ -1,8 +1,6 @@
 name := "FFXPopupMenu"
 
-version := "1.0"
+version := "1.0-SNAPSHOT"
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.11.9"
 
-// https://mvnrepository.com/artifact/org.scalafx/scalafx_2.12
-libraryDependencies += "org.scalafx" % "scalafx_2.12" % "8.0.102-R11"
