@@ -27,7 +27,13 @@ class FFXExample extends javafx.application.Application{
     btn.setOnAction(new EventHandler[ActionEvent] {
       override def handle(e: ActionEvent) {
         println("Hello World!")
-        popuppane.showPopupThreadsafe(btn.localToScene(btn.getBoundsInLocal).getMinX, btn.localToScene(btn.getBoundsInLocal).getMinY, Future.successful(Array.empty[(String, Object)]), "Some title", "this is an object" )
+        import scala.concurrent.ExecutionContext.Implicits.global
+        val f : Future[Array[(String, Object)]] = Future{Array(
+          ("Button #1", "first active object"),
+          ("Button #2", "second active object"),
+          ("Button #3", "third active object")
+        )}
+        popuppane.showPopupThreadsafe(btn.localToScene(btn.getBoundsInLocal).getMinX, btn.localToScene(btn.getBoundsInLocal).getMinY, f, "Some title", "this is an object" )
       }
     })
 

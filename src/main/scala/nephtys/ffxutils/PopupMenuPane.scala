@@ -20,8 +20,14 @@ import scala.concurrent.Future
   */
 class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, background: Node, columns: Int = 2, maxActiveButtonNumber: Int = 4) extends StackPane {
 
+  //TODO: order buttons in one simple grid
 
-  this.setStyle("-fx-background-color: #AA0000;")
+  //TODO: make buttons styleable
+
+  //TODO: fix issue with weak reference map
+
+
+  this.setStyle("-fx-background-color: #AA00BB;")
 
   //contains invisible menu that can be shown and rerendered via methods and another background
 
@@ -94,7 +100,7 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
   GridPane.setConstraints(popup, 1, 1)
   foreground.getChildren.add(popup)
   this.getChildren.addAll(background, foreground)
-  foreground.setStyle("-fx-background-color: #00FF00;")
+  //foreground.setStyle("-fx-background-color: #00FF00;")
 
   //add foreground action handlers to close popup on any click that is not on the popup
   foreground.setOnMouseClicked(new EventHandler[MouseEvent] {
