@@ -14,6 +14,8 @@ object ScalaFXHelloWorld extends JFXApp {
 
   stage = new PrimaryStage {
     title = "ScalaFX Hello World"
+    width = 800
+    height = 600
     scene = new Scene {
       fill = Black
       content = new HBox {
