@@ -22,9 +22,9 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
 
   //TODO: order buttons in one simple grid
 
-  //TODO: make buttons styleable
+  //TODO: make buttons & title styleable
 
-  //TODO: fix issue with weak reference map
+  //TODO: Test in BiRe product, with a working minimal wrapper
 
 
   this.setStyle("-fx-background-color: #AA00BB;")
