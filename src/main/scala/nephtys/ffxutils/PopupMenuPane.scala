@@ -40,7 +40,7 @@ class PopupMenuPane(val popupid: String, val popupWidth: Double, val popupHeight
           val first_object = _firstObject.get()
           val x = activeObjects.get()
           if (first_object != null && x.length > i) {
-            activeHandler.apply(first_object, x.apply(i))
+            activeHandler.apply(first_object, x.apply(i)._2)
           } else {
             println("Error in active button eventhandler")
           }
