@@ -1,5 +1,5 @@
 package nephtys.ffxutils
-import javafx.application.Application
+import javafx.application.{Application, Platform}
 import javafx.event.{ActionEvent, EventHandler}
 import javafx.scene.Scene
 import javafx.scene.control.Button
@@ -41,6 +41,10 @@ class FFXExample extends javafx.application.Application{
 
     primaryStage.setScene(new Scene(popuppane, 800, 600))
     primaryStage.show()
+
+    Platform.runLater(new Runnable {
+      override def run(): Unit = btn.fire()
+    })
   }
 }
 

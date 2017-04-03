@@ -71,7 +71,7 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
 
   protected val popup = new BorderPane()
   popup.setStyle("-fx-background-color: #000000;")
-  protected val activeButtons = new VBox()
+  protected val activeButtons = new GridPane()
   activeButtons.getChildren.setAll(_buttons)
   protected val passiveButtons = new VBox()
   protected val titleLabel = new Label()
@@ -84,6 +84,34 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
 
 
   private val activeObjects: AtomicReference[Array[(String, Object)]] = new AtomicReference(Array.empty)
+
+
+  //Gridpane in center, for active buttons
+  val rows : Int = Math.ceil(maxActiveButtonNumber.toFloat / columns.toFloat).toInt
+
+  {
+    //add equal column constraints
+    (0 until columns).foreach( i => {
+      val cc = new ColumnConstraints()
+      cc.setPercentWidth(100.0f.toDouble / columns.toDouble)
+      activeButtons.getColumnConstraints.add(cc)
+    })
+
+    //add equal row constraints
+    (0 until rows).foreach( i => {
+      val rc = new RowConstraints()
+      rc.setPercentHeight(100.0f.toDouble / rows.toDouble)
+      activeButtons.getRowConstraints.add(rc)
+    })
+
+    //set column and row for each button
+    (0 until maxActiveButtonNumber).foreach(i => {
+      val c = i % columns
+      val r = i / rows
+      GridPane.setConstraints(_buttons.get(i), c, r)
+    })
+  }
+
 
 
   //add frontpane with absolute positioning for borderpane
