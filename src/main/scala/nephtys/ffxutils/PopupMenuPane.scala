@@ -19,7 +19,7 @@ import scala.concurrent.Future
 /**
   * Created by Christopher on 02.04.2017.
   */
-class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, background: Node, columns: Int = 2, maxActiveButtonNumber: Int = 4) extends StackPane {
+class PopupMenuPane(val popupid: String, val popupWidth: Double, val popupHeight: Double, background: Node,val columns: Int = 2, val maxActiveButtonNumber: Int = 4) extends StackPane {
 
   //TODO: Test in BiRe product, with a working minimal wrapper
 
@@ -279,7 +279,7 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
   }
   //not needed: private var passiveHandlers : Array[(String, Object => Unit)] = Array.empty
 
-  PopupMenuPane.addWeakReference(id, this)
+  PopupMenuPane.addWeakReference(popupid, this)
 }
 
 //all drinks, give out, statistics
