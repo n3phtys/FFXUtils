@@ -24,7 +24,7 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
   //TODO: Test in BiRe product, with a working minimal wrapper
 
 
-  this.setStyle("-fx-background-color: #AA00BB;")
+  //this.setStyle("-fx-background-color: #AA00BB;")
 
   //contains invisible menu that can be shown and rerendered via methods and another background
 
@@ -68,7 +68,7 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
 
 
   protected val popup = new BorderPane()
-  popup.setStyle("-fx-background-color: #000000;")
+  //popup.setStyle("-fx-background-color: #000000;")
   protected val activeButtons = new GridPane()
   activeButtons.getChildren.setAll(_buttons)
 
@@ -142,7 +142,7 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
 
   //second type of Objects
   def showPopupThreadsafe(positionX: Double, positionY: Double, buttons: Future[Array[(String, Object)]], title: String, firstObjectType: Object): Unit = {
-    println(s"Showing popup at position $positionX and $positionY")
+    //println(s"Showing popup at position $positionX and $positionY")
     _firstObject.set(firstObjectType) //set user
     import scala.concurrent.ExecutionContext.Implicits.global
     Platform.runLater(new Runnable {
