@@ -1,0 +1,1232 @@
+
+/* ====== CHART TOP LEVEL ITEMS =========================================================== */
+.chart {
+    -fx-padding: 0;
+}
+.chart-content {
+    -fx-padding: 0;
+}
+.chart-title {
+    -fx-font-size: 1.4em;
+}
+
+.chart-legend {
+    -fx-background-color: ladder(-fx-background, derive(-fx-box-border, -10%) 50%, derive(-fx-box-border, 10%) 51%),
+    ladder(-fx-background, derive(-fx-control-inner-background, 5%) 50%, derive(-fx-control-inner-background, -5%) 51%);
+    -fx-background-insets: 0,1;
+    -fx-background-radius: 6,5;
+    -fx-padding: 6px;
+}
+
+/* ====== AXIS ============================================================================ */
+.axis {
+    -fx-tick-label-font-size: 8pt;
+    -fx-tick-label-fill: white;
+}
+.axis:top {
+    -fx-border-color: transparent transparent #666666 transparent;
+}
+.axis:right {
+    -fx-border-color: transparent transparent transparent #666666;
+}
+.axis:bottom {
+    -fx-border-color: #666666 transparent transparent transparent;
+
+}
+.axis:left {
+    -fx-border-color: transparent #666666 transparent transparent;
+}
+.axis-tick-mark {
+    -fx-fill: null;
+    -fx-stroke: #666666;
+}
+.axis-minor-tick-mark {
+    -fx-fill: null;
+    -fx-stroke: #AAAAAA;
+}
+
+.axis .text {
+    -fx-font-smoothing-type: lcd;
+}
+
+
+/* ====== BAR CHART =========================================================== */
+/* TODO flip gradient vertical for negative bars */
+.chart-bar {
+    -fx-bar-fill: #699bbf;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
+    linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+}
+
+.negative.chart-bar {
+    -fx-background-color: linear-gradient(to top, derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
+    linear-gradient(to top, derive(-fx-bar-fill, 80%), derive(-fx-bar-fill,0%)),
+    linear-gradient(to top, derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-background-radius: 0 0 5 5, 0 0 4 4, 0 0 3 3;
+}
+.bar-chart:horizontal .chart-bar, .stacked-bar-chart:horizontal .chart-bar {
+    -fx-background-color: linear-gradient(to left, derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
+    linear-gradient(to left, derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    linear-gradient(to left, derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-background-radius: 0 5 5 0, 0 4 4 0, 0 3 3 0;
+}
+.bar-chart:horizontal .negative.chart-bar, .stacked-bar-chart:horizontal .negative.chart-bar {
+    -fx-background-color: linear-gradient(to right, derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
+    linear-gradient(to right, derive(-fx-bar-fill, 80%), derive(-fx-bar-fill, 0%)),
+    linear-gradient(to right, derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-background-radius: 5 0 0 5, 4 0 0 4, 3 0 0 3;
+}
+/*
+.default-color0.chart-bar { -fx-bar-fill: #f9d900; }
+.default-color1.chart-bar { -fx-bar-fill: #a9e200; }
+.default-color2.chart-bar { -fx-bar-fill: #22bad9; }
+.default-color3.chart-bar { -fx-bar-fill: #0181e2; }
+.default-color4.chart-bar { -fx-bar-fill: #2f357f; }
+.default-color5.chart-bar { -fx-bar-fill: #860061; }
+.default-color6.chart-bar { -fx-bar-fill: #c62b00; }
+.default-color7.chart-bar { -fx-bar-fill: #ff5700; }*/
+.bar-legend-symbol {
+    -fx-padding: 8px;
+}
+
+
+
+
+/* ------- MAIN BUTTON ------- */
+.combo-box-base  {
+    -fx-background-color: #4483af, #4483af, #4483af, #404040;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+
+
+/*------- THIS SPECIFIES THE BUTTON COLOR WHEN THE POPUP MENU IS SHOWING -------*/
+.combo-box-base:showing {
+    -fx-color: #535353;
+}
+.combo-box-base:hover {
+    -fx-color: #535353;
+}
+.combo-box-base:focused {
+    -fx-background-color: #4483af, #4483af, #4483af, #404040;
+    -fx-background-radius: 0;
+    -fx-background-insets: -1.4, 0, 1, 2;
+}
+
+/* ------- OPEN BUTTON ------- */
+.combo-box-base > .arrow-button {
+    -fx-background-color: #4483af, #4483af, #4483af, #404040;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0;
+    -fx-padding: 0 0.667em 0 0.667em; /* 6 8 6 8 */
+    /*-fx-padding: 0; *//* 6 8 6 8 */
+}
+
+.combo-box-base:hover > .arrow-button,
+.date-picker:hover > .arrow-button {
+    -fx-background-color: #4483af, #4483af, #4483af, #535353;
+    -fx-background-radius: 0;
+}
+
+.combo-box-base:showing > .arrow-button,
+.date-picker:showing > .arrow-button {
+    -fx-color: #535353;
+}
+
+/* ------- ARROW* ------- */
+.combo-box-base > .arrow-button > .arrow,
+.web-view .form-select-button .arrow {
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-background-color: #4483af, #4483af, #4483af, #33729e;
+    -fx-padding: 0.166667em 0.333333em 0.166667em 0.333333em; /* 2 4 2 4 */
+    -fx-shape: "M 0 0 h 7 l -3.5 4 z";
+}
+
+.web-view .form-select-button {
+    -fx-background-radius: 2, 2, 1, 0;
+    -fx-background-insets: 2 2 1 2, 2, 3, 4;
+}
+
+
+/* -------------- STYLES FOR THE DEFAULT LISTVIEW-BASED COMBOBOX ------------- */
+
+/* Customise the ListCell that appears in the ComboBox button itself */
+.combo-box > .list-cell {
+    -fx-background: #535353;
+    -fx-font-size: 14pt;
+    -fx-text-fill: #404040; /* since i cant seem to find where the background is changed, lets change text color for now */
+    -fx-padding: 0.25em 3 0.166667em 0.583333em; /* 3 0 2 7 */
+    -fx-cell-size: 1.7500em; /* 21 */
+}
+
+.combo-box-popup > .list-view {
+    -fx-background-color: #4483af, #404040;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-padding: 4 0 4 5;
+    -fx-background-color: #4483af, #404040;
+    -fx-text-fill: white;
+
+    /* No alternate highlighting */
+    /* -fx-background-color: -fx-control-inner-background; */
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected,
+.combo-box-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover {
+    /*-fx-background: -fx-accent;*/
+    /*-fx-background-color: -fx-selection-bar;*/
+    -fx-background-color: #535353;
+    -fx-text-fill: white;
+}
+
+.combo-box-popup  > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover {
+    -fx-background-color: #535353;
+    -fx-text-fill: white;
+}
+
+.combo-box-popup > .list-view > .placeholder > .label {
+    -fx-background-color: #404040;
+    -fx-text-fill: white;
+}
+
+
+
+/*******************************************************************************
+ *                                                                             *
+ * DoubleButton                                                                      *
+ *                                                                             *
+ ******************************************************************************/
+
+/* LEFT */
+.double-button-left {
+    -fx-font-size: 22pt;
+    -fx-font-weight: bold;
+    -fx-border: transparent;
+    -fx-background-color: linear-gradient(to right, derive(-fx-foreground-color-base, +20%), -fx-foreground-color-base 80%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-text-fill: -fx-foreground-text-color;
+    -fx-alignment: CENTER;
+}
+
+.double-button-left:hover {
+    -fx-background-color: linear-gradient(to right, derive(-fx-foreground-color-base, +30%), -fx-foreground-color-base 80%);
+}
+
+.double-button-left:armed {
+    -fx-background-color: linear-gradient(to right, derive(-fx-foreground-color-base, +45%), -fx-foreground-color-base 80%);
+}
+
+.double-button-left:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+
+
+/* RIGHT */
+.double-button-right {
+    -fx-font-size: 22pt;
+    -fx-font-weight: bold;
+    -fx-border: transparent;
+    -fx-background-color: linear-gradient(to left, derive(-fx-foreground-color-base, +20%), -fx-foreground-color-base 80%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-text-fill: -fx-foreground-text-color;
+    -fx-alignment: CENTER;
+}
+
+.double-button-right:hover {
+    -fx-background-color: linear-gradient(to left, derive(-fx-foreground-color-base, +30%), -fx-foreground-color-base 80%);
+}
+
+.double-button-right:armed {
+    -fx-background-color: linear-gradient(to left, derive(-fx-foreground-color-base, +45%), -fx-foreground-color-base 80%);
+}
+
+.double-button-right:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+
+
+
+
+.scroll-bar > .increment-button {
+    -fx-background-color: #404040;
+    -fx-padding: 0; /* set width of scrollbar here */
+}
+
+.scroll-bar > .decrement-button {
+    -fx-background-color: #404040;
+    -fx-padding: 0; /* set width of scrollbar here */
+}
+
+
+.root{
+    -fx-foreground-color-base: derive(#4483af, -10%);
+
+    -fx-foreground-color-gradient: linear-gradient(to bottom right, -fx-foreground-color-base, derive( -fx-foreground-color-base, +50%) );
+
+    /* -fx-foreground-color-gradient: radial-gradient(center 50% 50%, radius 50%, -fx-foreground-color-base, derive( -fx-foreground-color-base, -30%));
+
+ */
+    -fx-foreground-color-gradient-light: linear-gradient(to bottom right, derive( -fx-foreground-color-base, +20%), derive( -fx-foreground-color-base, +40%) );
+    -fx-foreground-color-gradient-lighter: linear-gradient(to bottom right, derive( -fx-foreground-color-base, +40%), derive( -fx-foreground-color-base, +60%) );
+    -fx-foreground-color-gradient-dark: linear-gradient(to bottom right, derive( -fx-foreground-color-base, -20%), derive( -fx-foreground-color-base, -40%) );
+    -fx-foreground-color-gradient-darker: linear-gradient(to bottom right, derive( -fx-foreground-color-base, +40%), derive( -fx-foreground-color-base, +60%) );
+
+    -fx-foreground-text-color: white;
+
+    -fx-background-color-base: #404040;
+    -fx-background: -fx-background-color-base;
+    -fx-background-color-light: derive(-fx-background-color-base, +30%);
+    -fx-selected-color: #07df07;
+    -fx-selected-color-gradient: linear-gradient(to bottom right,derive( -fx-selected-color, -40%), -fx-selected-color);
+
+    -fx-shadow-small: dropshadow( gaussian , rgba(0,0,0,0.5) , 10,0,2,2 );
+    -fx-shadow-medium: dropshadow( gaussian , rgba(0,0,0,0.5) , 10,0,5,5 );
+    -fx-shadow-large: dropshadow( gaussian , rgba(0,0,0,0.5) , 10,0,8,8 );
+
+    -fx-button-padding-medium: 5px; /*not working :( */
+
+    -fx-disabled-opacity: 0.7;
+
+    -fx-dark-text-color: black;
+    -fx-mid-text-color: #292929;
+    -fx-light-text-color: white;
+
+    -fx-text-background-color: ladder(
+            -fx-background,
+            -fx-light-text-color 45%,
+            -fx-dark-text-color  46%,
+            -fx-dark-text-color  59%,
+            -fx-mid-text-color   60%
+    );
+
+    /* listvie mods - may have impact somewhere else... */
+
+    -fx-control-inner-background: -fx-background-color-light;
+    -fx-focus-color: transparent;
+    -fx-box-border: transparent;
+    -fx-cell-focus-inner-border: transparent;
+    -fx-accent:-fx-foreground-color-base;
+    -fx-selection-bar: -fx-selected-color-gradient;
+
+}
+
+
+.custom-button {
+    -fx-font: 16px "Serif";
+    -fx-padding: 10;
+    -fx-background-color: #CCFF99;
+}
+/*
+.button {
+    -fx-font: 16px "Serif";
+    -fx-padding: 10;
+    -fx-background-color: #CCFF99;
+}
+*/
+.itemcelllabel {
+    -fx-font-size: 10pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+.thisismystyle {
+    -fx-font-size: 30pt;
+}
+
+.itemcellfancylabel {
+
+    -fx-font-size: 12pt;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-stroke-width: 0.5pt;
+    -fx-stroke: black;
+}
+
+/* COLORS */
+.background-color {
+    -fx-background-color: #404040;
+}
+
+.text-light-background-blueish {
+    -fx-text-fill: #ffffff;
+    -fx-border-color: transparent;
+    -fx-background-color: linear-gradient(to bottom right,
+        /*#4483af*/ #ffffff,
+    derive( #4483af, +20%)
+    );
+    -fx-effect: -fx-shadow-medium;
+}
+
+.text-light-background-dark {
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #404040;
+    -fx-background-color: #404040;
+    -fx-background: #404040;
+}
+
+.quickmenu-colors {
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #535353;
+    -fx-background-color: #535353;
+}
+
+.ffaMessageText {
+    -fx-font-weight: bold;
+    -fx-fill: white;
+    -fx-font: 16px "Serif";
+}
+
+
+/* BUTTONS */
+
+
+.user-button {
+    -fx-font: 18px "Serif";
+    -fx-background-radius: 0;
+}
+
+.user-grouped-button {
+    -fx-font: 14px "Serif";
+    -fx-background-radius: 0;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 10,0,5,5 );
+}
+
+.top4-button {
+    -fx-font: 15px "Serif";
+    -fx-background-radius: 0;
+}
+
+.overview-menu-button {
+    -fx-font: 14px "Serif";
+    -fx-background-radius: 0;
+}
+
+.item-button {
+    -fx-font: 16px "Serif";
+    -fx-background-radius: 0;
+}
+
+.cart-button {
+    -fx-font: 14px "Serif";
+    -fx-background-radius: 0;
+}
+
+.action-button {
+    -fx-font-size: 14pt;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: transparent;
+    -fx-background-color: linear-gradient(to bottom right,
+    derive( #4483af, +20%),
+    derive( #4483af, +50%)
+    );
+    -fx-effect: -fx-shadow-medium;
+}
+.action-button:selected {
+    -fx-background-color: -fx-selected-color-gradient;
+    -fx-text-fill: -fx-light-text-color;
+}
+/* LABELS */
+.overview-date {
+    -fx-font: 30px "Serif";
+    -fx-alignment: center;
+}
+
+.overview-time {
+    -fx-font: 48px "Serif";
+    -fx-alignment: center;
+}
+.user-grouped-label {
+    -fx-text-fill : black;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-font: 16px "Serif";
+    -fx-background-radius: 0;
+}
+
+.selection-label{
+    -fx-font-size: 16px;
+}
+
+.toggle-button {
+
+}
+
+/* BASESTYLES */
+.base-padding {
+    -fx-padding: 5;
+}
+
+.base-no-padding {
+    -fx-padding: 0;
+}
+
+.base-cell-spacing {
+    -fx-vertical-cell-spacing: 5;
+    -fx-horizontal-cell-spacing: 5;
+}
+
+.base-vh-gaps {
+    -fx-vgap: 5;
+    -fx-hgap: 5;
+}
+
+.base-spacing{
+    -fx-spacing : 5;
+}
+
+.debug-coloring{
+    -fx-background-color: #ff0000;
+}
+
+/* auto attach */
+.scroll-pane {
+    -fx-border-color: #404040;
+    -fx-background-color: #404040;
+    -fx-background-insets: 0;
+}
+
+.test {
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: linear-gradient(to bottom,
+    #4483af,
+    derive(#4483af, +20%)
+    );
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 10,0,5,5 );
+}
+
+.sum-label {
+    -fx-font-size: 14pt;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Button                                                                      *
+ *                                                                             *
+ ******************************************************************************/
+
+.button {
+    -fx-text-fill: -fx-foreground-text-color;
+    -fx-border-color: transparent;
+    -fx-background-color: -fx-foreground-color-gradient;
+    -fx-effect: -fx-shadow-medium;
+    -fx-background-radius: 0;
+    -fx-padding: 5;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}
+
+.button:focused {
+    /* -fx-color: red;
+     -fx-background-color: white;
+     -fx-background-insets: -1.4, 0, 1, 2;
+     -fx-background-radius:  6.4, 5, 4, 3;*/
+}
+
+.button:hover {
+    -fx-background-color: -fx-foreground-color-gradient-light;
+}
+
+.button:armed {
+    -fx-background-color: -fx-foreground-color-gradient-lighter;
+}
+
+.button:default {
+    -fx-base: -fx-accent;
+}
+
+.button:cancel {
+}
+
+.button:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.button:show-mnemonics > .mnemonic-underline {
+    -fx-stroke: -fx-text-fill;
+}
+/*******************************************************************************
+ *                                                                             *
+ * ButtonLight                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+
+.buttonLight {
+    -fx-font: 17px "Serif";
+    -fx-text-fill: derive( -fx-foreground-color-base, -10%);
+    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+    -fx-background-color: linear-gradient(to bottom right,
+    derive( -fx-foreground-color-base, 70%), white
+    );
+    -fx-effect: -fx-shadow-medium;
+    -fx-background-radius: 0;
+    -fx-padding: 5;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}
+
+.buttonLight:focused {
+}
+
+.buttonLight:hover {
+    -fx-background-color: linear-gradient(to bottom right,
+    derive( -fx-foreground-color-base, 40%), white
+    );
+}
+
+.buttonLight:armed {
+    -fx-background-color: linear-gradient(to bottom right,
+    derive( -fx-foreground-color-base, 10%), white
+    );
+}
+
+.buttonLight:default {
+    -fx-base: -fx-accent;
+}
+
+.buttonLight:cancel {
+}
+
+.buttonLight:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.buttonLight:show-mnemonics > .mnemonic-underline {
+    -fx-stroke: -fx-text-fill;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Separator                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+.separator > .line {
+    /*-fx-border-style: segments(0.166667em, 0.166667em);*/
+    -fx-border-width: 3; /* 1 */
+}
+
+.separator:horizontal > .line {
+    -fx-background-color: null;
+    -fx-padding: 0.083333em 0.0em 0.0em 0.0em; /* 1 0 0 0 */
+    -fx-border-color: linear-gradient(to left, derive(-fx-foreground-color-base, +40%), -fx-foreground-color-base, derive(-fx-foreground-color-base, +40%)) transparent transparent transparent;
+}
+
+.separator:vertical > .line {
+    -fx-background-color: null;
+    -fx-padding: 0.0em 0.083333em 0.0em 0.0em; /* 0 1 0 0 */
+    -fx-border-color:  transparent -fx-foreground-color-base transparent transparent;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * DoubleButton                                                                      *
+ *                                                                             *
+ ******************************************************************************/
+
+/* LEFT */
+.double-button-left {
+    -fx-font-size: 22pt;
+    -fx-font-weight: bold;
+    -fx-border: transparent;
+    -fx-background-color: linear-gradient(to right, derive(-fx-foreground-color-base, +20%), -fx-foreground-color-base 80%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-text-fill: -fx-foreground-text-color;
+    -fx-alignment: CENTER;
+}
+
+.double-button-left:hover {
+    -fx-background-color: linear-gradient(to right, derive(-fx-foreground-color-base, +30%), -fx-foreground-color-base 80%);
+}
+
+.double-button-left:armed {
+    -fx-background-color: linear-gradient(to right, derive(-fx-foreground-color-base, +45%), -fx-foreground-color-base 80%);
+}
+
+.double-button-left:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+
+
+/* RIGHT */
+.double-button-right {
+    -fx-font-size: 22pt;
+    -fx-font-weight: bold;
+    -fx-border: transparent;
+    -fx-background-color: linear-gradient(to left, derive(-fx-foreground-color-base, +20%), -fx-foreground-color-base 80%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-text-fill: -fx-foreground-text-color;
+    -fx-alignment: CENTER;
+}
+
+.double-button-right:hover {
+    -fx-background-color: linear-gradient(to left, derive(-fx-foreground-color-base, +30%), -fx-foreground-color-base 80%);
+}
+
+.double-button-right:armed {
+    -fx-background-color: linear-gradient(to left, derive(-fx-foreground-color-base, +45%), -fx-foreground-color-base 80%);
+}
+
+.double-button-right:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * TitledPane                                                                  *
+ *                                                                             *
+ ******************************************************************************/
+
+
+.titled-pane
+{
+    -fx-skin: "com.sun.javafx.scene.control.skin.TitledPaneSkin";
+    -fx-text-fill: white;
+}
+
+.titled-pane > .title
+{
+    -fx-font-size: 14pt;
+    /*-fx-background-color: #4483af;*/
+    -fx-background-color: linear-gradient(to bottom,
+    #3d759d,
+    derive(#3d759d, -10%),
+    #3d759d);
+    -fx-background-radius: 0;
+    -fx-padding: 10 5 10 10;
+}
+
+.titled-pane > .title > .arrow-button
+{
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-padding: 0.0em 0.25em 0.0em 0.0em; /* 0 3 0 0 */
+}
+
+.titled-pane > .title > .arrow-button .arrow
+{
+    -fx-background-color: -fx-mark-color;
+    -fx-padding: 0.25em 0.3125em 0.25em 0.3125em; /* 3 3.75 3 3.75 */
+    -fx-shape: "M 0 0 h 7 l -3.5 4 z";
+}
+
+.titled-pane:collapsed > .title > .arrow-button .arrow
+{
+    -fx-rotate: -90;
+}
+
+.titled-pane > *.content
+{
+    -fx-border-color: #404040;
+    -fx-background-color: #404040;
+    -fx-padding: 0;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ToggleButton                                                                *
+ *                                                                             *
+ ******************************************************************************/
+
+
+.toggle-button {
+    -fx-border-color: transparent;
+    -fx-background-color: -fx-foreground-color-gradient;
+    -fx-background-radius:0;
+    -fx-padding: 0;
+    -fx-text-fill: -fx-foreground-text-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+    -fx-effect: -fx-shadow-medium;
+}
+
+.toggle-button:focused {}
+
+.toggle-button:hover {
+    -fx-background-color: linear-gradient(to bottom right, derive(-fx-foreground-color-base, -10%), derive( -fx-foreground-color-base, +10%) );
+}
+
+.toggle-button:armed {
+    -fx-background-color: linear-gradient(to bottom right, derive(-fx-foreground-color-base, -20%), derive( -fx-foreground-color-base, -0%) );
+    -fx-effect: -fx-shadow-small;
+}
+
+.toggle-button:selected {
+    -fx-background-color: -fx-selected-color-gradient;
+    -fx-text-fill: -fx-light-text-color;
+}
+
+.toggle-button:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.toggle-button:show-mnemonics > .mnemonic-underline {
+    -fx-stroke: -fx-text-fill;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Dialog                                                                      *
+ *                                                                             *
+ ******************************************************************************/
+
+.dialog-pane {
+    -fx-background-color: -fx-background;
+    -fx-padding: 0;
+}
+
+.dialog-pane > .expandable-content {
+    -fx-padding: 0.666em; /* 8px */
+}
+
+.dialog-pane > .button-bar > .container {
+    -fx-padding: 0.833em; /* 10px */
+}
+
+.dialog-pane > .content.label {
+    -fx-alignment: top-left;
+    -fx-padding: 1.333em 0.833em 0 0.833em; /* 16px 10px 0px 10px */
+}
+
+.dialog-pane > .content {
+    -fx-padding: 0.833em; /* 10 */
+}
+
+.dialog-pane:no-header .graphic-container {
+    -fx-padding: 0.833em 0 0 0.833em; /* 10px 0px 0px 10px */
+}
+
+.dialog-pane:header .header-panel {
+    /*-fx-padding: 0.833em 1.166em 0.833em 1.166em; *//* 10px 14px 10px 14px */
+    -fx-padding: 0.833em; /* 10px */
+    -fx-background-color: -fx-box-border, linear-gradient(-fx-background, derive(-fx-background, 30%));
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-font-size: 1.167em; /* 14px */
+    -fx-wrap-text: true;
+}
+
+.dialog-pane:header .header-panel .graphic-container {
+    /* This prevents the text in the header running directly into the graphic */
+    -fx-padding: 0 0 0 0.833em; /* 0px 0px 0px 10px */
+}
+
+.dialog-pane > .button-bar > .container > .details-button {
+    -fx-alignment: baseline-left;
+    -fx-focus-traversable: false;
+    -fx-padding: 0.416em; /* 5px */
+    -fx-font-size: 0.833em; /* 10px */
+}
+
+/*
+.dialog-pane > .button-bar > .container > .details-button.more {
+    -fx-graphic: url("dialog-more-details.png");
+}
+
+.dialog-pane > .button-bar > .container > .details-button.less {
+    -fx-graphic: url("dialog-fewer-details.png");
+}
+*/
+.dialog-pane > .button-bar > .container > .details-button:hover {
+    -fx-underline: true;
+}
+
+.alert.confirmation.dialog-pane,
+.text-input-dialog.dialog-pane,
+.choice-dialog.dialog-pane {
+    /*  -fx-graphic: url("dialog-confirm.png");*/
+}
+
+.alert.information.dialog-pane {
+    /*  -fx-graphic: url("dialog-information.png");*/
+}
+
+.alert.error.dialog-pane {
+    /* -fx-graphic: url("dialog-error.png");*/
+}
+
+.alert.warning.dialog-pane {
+    /* -fx-graphic: url("dialog-warning.png");*/
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ListView and ListCell                                                       *
+ *                                                                             *
+ ******************************************************************************/
+
+.list-view {
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1;
+
+    /* There is some oddness if padding is in em values rather than pixels,
+       in particular, the left border of the control doesn't show. */
+    -fx-padding: 1; /* 0.083333em; */
+}
+
+.list-view:focused {
+    -fx-background-color: -fx-focus-color,-fx-box-border,-fx-control-inner-background;
+    -fx-background-insets: -1.4, 0, 1;
+    -fx-background-radius: 1.4, 0, 0;
+
+    /* There is some oddness if padding is in em values rather than pixels,
+       in particular, the left border of the control doesn't show. */
+    -fx-padding: 1; /* 0.083333em; */
+}
+
+.list-view > .virtual-flow > .scroll-bar:vertical{
+    -fx-background-insets: 0, 0 0 0 1;
+    -fx-padding: -1 -1 -1 0;
+}
+
+.list-view > .virtual-flow > .scroll-bar:horizontal{
+    -fx-background-insets: 0, 1 0 0 0;
+    -fx-padding: 0 -1 -1 -1;
+}
+
+.list-view:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.list-view > .virtual-flow > .corner {
+    -fx-background-color: -fx-box-border, -fx-base;
+    -fx-background-insets: 0, 1 0 0 1;
+}
+
+.list-cell {
+    -fx-background-color: -fx-control-inner-background;
+    -fx-padding: 0.25em; /* 3 */
+    -fx-text-fill: -fx-text-inner-color;
+    -fx-opacity: 1;
+}
+
+.list-cell:odd {
+    -fx-background-color: derive(-fx-control-inner-background,-5%);
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1, 2;
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused:odd {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, derive(-fx-control-inner-background,-5%);
+    -fx-background-insets: 0, 1, 2;
+}
+
+/* When the list-cell is selected and focused */
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background: -fx-accent;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected,
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:focused:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+/* When the ListView is _not_ focused, we show alternate selection colors */
+.list-cell:filled:selected:focused,
+.list-cell:filled:selected,
+.list-view:horizontal > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected {
+    -fx-background-color: lightgray;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.list-cell:filled:selected:focused:disabled,
+.list-cell:filled:selected:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.list-cell:filled:hover {
+    /*-fx-background-color: -fx-cell-hover-color;*/
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:focused:hover {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-cell-hover-color;
+    -fx-background-insets: 0, 1, 2;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.list-view:horizontal > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected,
+.list-view:horizontal > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected:hover {
+    -fx-background-color: linear-gradient(to right, derive(-fx-accent,-7%), derive(-fx-accent,-25%));
+}
+
+/* ====== PIE CHART ============================================================== */
+.chart-pie {
+    -fx-pie-color: #2f357f;
+    -fx-background-color: radial-gradient(radius 100%, derive(-fx-pie-color,55%), derive(-fx-pie-color,-20%));
+    -fx-background-insets: 0;
+    -fx-border-color: derive(-fx-pie-color,-30%);
+}
+.chart-pie-label {
+    -fx-padding: 3px;
+    -fx-fill: white;
+}
+.chart-pie-label-line {
+    -fx-stroke: #aaaaaa;
+    -fx-fill: #aaaaaa;
+}
+.default-color0.chart-pie { -fx-pie-color: #f9d900; }
+.default-color1.chart-pie { -fx-pie-color: #a9e200; }
+.default-color2.chart-pie { -fx-pie-color: #22bad9; }
+.default-color3.chart-pie { -fx-pie-color: #0181e2; }
+.default-color4.chart-pie { -fx-pie-color: #2f357f; }
+.default-color5.chart-pie { -fx-pie-color: #860061; }
+.default-color6.chart-pie { -fx-pie-color: #c62b00; }
+.default-color7.chart-pie { -fx-pie-color: #ff5700; }
+.negative.chart-pie {
+    -fx-pie-color: transparent;
+    -fx-background-color: white;
+}
+.pie-legend-symbol.chart-pie {
+    -fx-background-radius: 8px;
+    -fx-padding: 8px;
+    -fx-border-color: null;
+}
+
+
+
+
+
+
+/*******************************************************************************
+ *                                                                             *
+ * ListView and ListCell                                                       *
+ *                                                                             *
+ ******************************************************************************/
+
+.list-view {
+    -fx-background-color: #404040;
+    -fx-background-insets: 0, 1;
+
+    /* There is some oddness if padding is in em values rather than pixels,
+       in particular, the left border of the control doesn't show. */
+    -fx-padding: 1; /* 0.083333em; */
+}
+
+.list-view:focused {
+    -fx-background-color: #404040;
+    -fx-background-insets: -1.4, 0, 1;
+    -fx-background-radius: 1.4, 0, 0;
+
+    /* There is some oddness if padding is in em values rather than pixels,
+       in particular, the left border of the control doesn't show. */
+    -fx-padding: 1; /* 0.083333em; */
+}
+
+.list-view > .virtual-flow > .scroll-bar:vertical{
+    -fx-background-insets: 0, 0 0 0 1;
+    -fx-padding: -1 -1 -1 0;
+}
+
+.list-view > .virtual-flow > .scroll-bar:horizontal{
+    -fx-background-insets: 0, 1 0 0 0;
+    -fx-padding: 0 -1 -1 -1;
+}
+
+.list-view:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+/*
+.list-view > .virtual-flow > .corner {
+    -fx-background-color: -fx-box-border, -fx-base;
+    -fx-background-insets: 0, 1 0 0 1;
+}*/
+
+.list-cell {
+    -fx-background-color: #404040;
+    -fx-padding: 0.25em; /* 3 */
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.list-cell:odd {
+    -fx-background-color: derive(#404040,-5%);
+}
+
+
+
+
+.titled-pane
+{
+    -fx-skin: "com.sun.javafx.scene.control.skin.TitledPaneSkin";
+    -fx-text-fill: white;
+}
+
+.titled-pane > .title
+{
+    -fx-font-size: 14pt;
+    /*-fx-background-color: #4483af;*/
+    -fx-background-color: linear-gradient(to bottom,
+    #3d759d,
+    derive(#3d759d, -10%),
+    #3d759d);
+    -fx-background-radius: 0;
+    -fx-padding: 10 5 10 10;
+}
+
+.titled-pane > .title > .arrow-button
+{
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-padding: 0.0em 0.25em 0.0em 0.0em; /* 0 3 0 0 */
+}
+
+.titled-pane > .title > .arrow-button .arrow
+{
+    -fx-background-color: -fx-mark-color;
+    -fx-padding: 0.25em 0.3125em 0.25em 0.3125em; /* 3 3.75 3 3.75 */
+    -fx-shape: "M 0 0 h 7 l -3.5 4 z";
+}
+
+.titled-pane:collapsed > .title > .arrow-button .arrow
+{
+    -fx-rotate: -90;
+}
+
+.titled-pane > *.content
+{
+    -fx-border-color: #404040;
+    -fx-background-color: #404040;
+    -fx-padding: 0;
+}
+
+
+
+
+
+
+/*******************************************************************************
+ *                                                                             *
+ * ToggleButton                                                                *
+ *                                                                             *
+ ******************************************************************************/
+
+
+.toggle-button {
+    -fx-border-color: transparent;
+    -fx-background-color: -fx-foreground-color-gradient;
+    -fx-background-radius:0;
+    -fx-padding: 0;
+    -fx-text-fill: -fx-foreground-text-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+    -fx-effect: -fx-shadow-medium;
+}
+
+.toggle-button:focused {}
+
+.toggle-button:hover {
+    -fx-background-color: linear-gradient(to bottom right, derive(-fx-foreground-color-base, -10%), derive( -fx-foreground-color-base, +10%) );
+}
+
+.toggle-button:armed {
+    -fx-background-color: linear-gradient(to bottom right, derive(-fx-foreground-color-base, -20%), derive( -fx-foreground-color-base, -0%) );
+    -fx-effect: -fx-shadow-small;
+}
+
+.toggle-button:selected {
+    -fx-background-color: -fx-selected-color-gradient;
+    -fx-text-fill: -fx-light-text-color;
+}
+
+.toggle-button:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.toggle-button:show-mnemonics > .mnemonic-underline {
+    -fx-stroke: -fx-text-fill;
+}
+
+
+
+
+
+/*******************************************************************************
+ *                                                                             *
+ * ScrollBar                                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+
+.scroll-bar:vertical {
+    -fx-background-color: #404040;
+    -fx-padding: 0 5 0 5;
+}
+
+.scroll-bar:vertical > .track {
+    -fx-background-color:#404040;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar:vertical > .track-background {
+    -fx-background-color: #404040
+}
+
+.scroll-bar:vertical > .thumb {
+    -fx-background-color: #4483af;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar > .increment-button {
+    -fx-background-color: #404040;
+    -fx-padding: 0 15 0 15; /* set width of scrollbar here */
+}
+
+.scroll-bar > .decrement-button {
+    -fx-background-color: #404040;
+    -fx-padding: 0 15 0 15; /* set width of scrollbar here */
+}
+
+.scroll-bar:vertical > .increment-button > .increment-arrow {
+    -fx-padding: 0;
+    -fx-shape: " ";
+}
+
+.scroll-bar:vertical > .decrement-button > .decrement-arrow {
+    -fx-padding: 0;
+    -fx-shape: " ";
+}
+
+.scroll-bar:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+
+
+
+
+
+
+

@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.{AtomicBoolean, AtomicReference}
 import java.util.function.Consumer
 import javafx.application.Platform
 import javafx.event.{ActionEvent, EventHandler}
+import javafx.geometry.{HPos, Pos, VPos}
 import javafx.scene.Node
 import javafx.scene.control.{Button, Label}
 import javafx.scene.input.MouseEvent
@@ -19,10 +20,6 @@ import scala.concurrent.Future
   * Created by Christopher on 02.04.2017.
   */
 class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, background: Node, columns: Int = 2, maxActiveButtonNumber: Int = 4) extends StackPane {
-
-  //TODO: order buttons in one simple grid
-
-  //TODO: make buttons & title styleable
 
   //TODO: Test in BiRe product, with a working minimal wrapper
 
@@ -37,6 +34,7 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
       val btn = new Button()
       btn.setText("N/A")
       btn.setVisible(false)
+      styleActiveButton(btn)
       btn.setOnAction(new EventHandler[ActionEvent] {
         override def handle(event: ActionEvent): Unit = {
           val first_object = _firstObject.get()
@@ -73,14 +71,16 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
   popup.setStyle("-fx-background-color: #000000;")
   protected val activeButtons = new GridPane()
   activeButtons.getChildren.setAll(_buttons)
+
   protected val passiveButtons = new VBox()
+  passiveButtons.setFillWidth(true)
+  passiveButtons.setAlignment(Pos.CENTER)
+
   protected val titleLabel = new Label()
   popup.setTop(titleLabel)
   popup.setCenter(activeButtons)
   popup.setBottom(passiveButtons)
 
-  titleLabel.getStyleClass.addAll("base-padding", "quickmenu-colors")
-  titleLabel.setStyle("-fx-alignment: center")
 
 
   private val activeObjects: AtomicReference[Array[(String, Object)]] = new AtomicReference(Array.empty)
@@ -109,6 +109,8 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
       val c = i % columns
       val r = i / rows
       GridPane.setConstraints(_buttons.get(i), c, r)
+      GridPane.setHalignment(_buttons.get(i), HPos.CENTER)
+      GridPane.setValignment(_buttons.get(i), VPos.CENTER)
     })
   }
 
@@ -204,6 +206,7 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
         val _buttons = new util.ArrayList[Button]()
         handlers.foreach(a => {
           val b = new Button() //passive buttons are declared here
+          stylePassiveButton(b)
           b.setText(a._1)
           b.setOnAction(new EventHandler[ActionEvent] {
             override def handle(event: ActionEvent): Unit = if (_firstObject.get() != null) {
@@ -219,6 +222,54 @@ class PopupMenuPane(id: String, popupWidth: Double, popupHeight: Double, backgro
     })
 
   }
+
+  private final def stylePassiveButton(btn : Button): Unit = {
+    btn.getStyleClass.addAll(
+      "user-button",
+      "text-light-background-blueish"
+    )
+
+    btn.setPrefHeight(45)
+    btn.setPrefWidth(2000)
+    btn.setMaxHeight(Double.MaxValue)
+    btn.setMaxWidth(Double.MaxValue)
+  }
+
+  private final def styleActiveButton(btn : Button) : Unit = {
+      btn.getStyleClass.addAll(
+        "top4-button",
+        "text-light-background-blueish"
+      )
+    btn.setWrapText(true)
+
+    val measurement : Double = 75
+
+    btn.setMinHeight(measurement)
+    btn.setPrefHeight(measurement)
+    btn.setMaxHeight(measurement)
+    btn.setMinWidth(measurement)
+    btn.setPrefWidth(measurement)
+    btn.setMaxWidth(measurement)
+    //btn.setMaxWidth(Double.MaxValue)
+  }
+
+  private final def styleTopLabel(lbl : Label) : Unit = {
+    titleLabel.getStyleClass.addAll("base-padding", "quickmenu-colors")
+    titleLabel.setStyle("-fx-alignment: center")
+    titleLabel.setWrapText(true)
+    titleLabel.setMaxWidth(Double.MaxValue)
+    titleLabel.setStyle("-fx-font-weight:bold;-fx-alignment:center")
+  }
+
+  private final def stylePopupBackground() : Unit = {
+    this.popup.getStyleClass.addAll("base-no-padding")
+    this.setAlignment(Pos.CENTER)
+    activeButtons.getStyleClass.addAll("base-padding", "quickmenu-colors", "base-vh-gaps")
+    passiveButtons.getStyleClass.addAll("base-padding", "base-spacing", "quickmenu-colors")
+  }
+
+  styleTopLabel(titleLabel)
+  stylePopupBackground()
 
   protected def setTitle(str: String): Unit = this.titleLabel.setText(str)
 
