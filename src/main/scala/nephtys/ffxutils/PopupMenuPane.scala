@@ -21,11 +21,6 @@ import scala.concurrent.Future
   */
 class PopupMenuPane(val popupid: String, val popupWidth: Double, val popupHeight: Double, background: Node,val columns: Int = 2, val maxActiveButtonNumber: Int = 4) extends StackPane {
 
-  //TODO: Test in BiRe product, with a working minimal wrapper
-
-
-  //this.setStyle("-fx-background-color: #AA00BB;")
-
   //contains invisible menu that can be shown and rerendered via methods and another background
 
   private val _buttons: util.ArrayList[Button] = {
@@ -242,7 +237,7 @@ class PopupMenuPane(val popupid: String, val popupWidth: Double, val popupHeight
       )
     btn.setWrapText(true)
 
-    val measurement : Double = 75
+    val measurement : Double = 70
 
     btn.setMinHeight(measurement)
     btn.setPrefHeight(measurement)
