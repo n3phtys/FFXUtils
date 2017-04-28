@@ -20,7 +20,7 @@ class FFXExample extends javafx.application.Application{
     val btn = new Button
     btn.setText("Say 'Hello World'")
 
-    val popuppane = new PopupMenuPane(POPUPMENU_ID, 175, 250, btn)
+    val popuppane = new PopupMenuPane(POPUPMENU_ID, 175, 250, 70, 70, 45, btn)
     popuppane.setupActiveHandler((a : Object, b : Object) => println(s"$a pressed $b"))
     popuppane.setupPassiveHandlers(Array(("First button", obj => println(s"Pressed on first button with object $obj")), ("Second button", obj => println(s"Pressed on second button with object $obj"))))
 

@@ -19,7 +19,7 @@ import scala.concurrent.Future
 /**
   * Created by Christopher on 02.04.2017.
   */
-class PopupMenuPane(val popupid: String, val popupWidth: Double, val popupHeight: Double, background: Node,val columns: Int = 2, val maxActiveButtonNumber: Int = 4) extends StackPane {
+class PopupMenuPane(val popupid: String, val popupWidth: Double, val popupHeight: Double, val smallButtonWidth : Double, val smallButtonHeight : Double, val largeButtonHeight : Double, background: Node,val columns: Int = 2, val maxActiveButtonNumber: Int = 4) extends StackPane {
 
   //contains invisible menu that can be shown and rerendered via methods and another background
 
@@ -224,7 +224,7 @@ class PopupMenuPane(val popupid: String, val popupWidth: Double, val popupHeight
       "text-light-background-blueish"
     )
 
-    btn.setPrefHeight(45)
+    btn.setPrefHeight(largeButtonHeight)
     btn.setPrefWidth(2000)
     btn.setMaxHeight(Double.MaxValue)
     btn.setMaxWidth(Double.MaxValue)
@@ -237,14 +237,15 @@ class PopupMenuPane(val popupid: String, val popupWidth: Double, val popupHeight
       )
     btn.setWrapText(true)
 
-    val measurement : Double = 70
+    val measurementW : Double = smallButtonWidth
+    val measurementH : Double = smallButtonHeight
 
-    btn.setMinHeight(measurement)
-    btn.setPrefHeight(measurement)
-    btn.setMaxHeight(measurement)
-    btn.setMinWidth(measurement)
-    btn.setPrefWidth(measurement)
-    btn.setMaxWidth(measurement)
+    btn.setMinHeight(measurementH)
+    btn.setPrefHeight(measurementH)
+    btn.setMaxHeight(measurementH)
+    btn.setMinWidth(measurementW)
+    btn.setPrefWidth(measurementW)
+    btn.setMaxWidth(measurementW)
     //btn.setMaxWidth(Double.MaxValue)
   }
 
