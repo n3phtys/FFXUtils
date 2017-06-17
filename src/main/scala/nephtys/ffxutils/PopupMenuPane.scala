@@ -13,7 +13,7 @@ import javafx.scene.control.{Button, Label}
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout._
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
 
 /**
@@ -136,10 +136,9 @@ class PopupMenuPane(val popupid: String, val popupWidth: Double, val popupHeight
 
 
   //second type of Objects
-  def showPopupThreadsafe(positionX: Double, positionY: Double, buttons: Future[Array[(String, Object)]], title: String, firstObjectType: Object): Unit = {
+  def showPopupThreadsafe(positionX: Double, positionY: Double, buttons: Future[Array[(String, Object)]], title: String, firstObjectType: Object)(implicit execContext: ExecutionContext): Unit = {
     //println(s"Showing popup at position $positionX and $positionY")
     _firstObject.set(firstObjectType) //set user
-    import scala.concurrent.ExecutionContext.Implicits.global
     Platform.runLater(new Runnable {
       //first: make every active button invisible and set title
       override def run(): Unit = {
@@ -287,7 +286,7 @@ object PopupMenuPane {
     _panes.put(popupId, new WeakReference(pane))
   }
 
-  def showPopupThreadsafe(popupId: String, positionX: Double, positionY: Double, buttons: Future[Array[(String, Object)]], title: String, firstObjectType: Object): Unit = {
+  def showPopupThreadsafe(popupId: String, positionX: Double, positionY: Double, buttons: Future[Array[(String, Object)]], title: String, firstObjectType: Object)(implicit execContext: ExecutionContext): Unit = {
     val p = _panes.get(popupId)
     if (p != null) {
       val popuppane = p.get()
@@ -297,7 +296,7 @@ object PopupMenuPane {
     }
   }
 
-  def showPopupThreadsafe(popupId : String, fromNode : Node, buttons : Future[Array[(String, Object)]], title : String, firstObjectType : Object) : Unit = {
+  def showPopupThreadsafe(popupId : String, fromNode : Node, buttons : Future[Array[(String, Object)]], title : String, firstObjectType : Object)(implicit execContext: ExecutionContext) : Unit = {
     showPopupThreadsafe(popupId, fromNode.localToScene(fromNode.getBoundsInLocal).getMinX, fromNode.localToScene(fromNode.getBoundsInLocal).getMinY, buttons, title, firstObjectType)
   }
 

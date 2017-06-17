@@ -1,9 +1,9 @@
 package nephtys.ffxutils
-import javafx.application.{Application, Platform}
+
+import javafx.application.Platform
 import javafx.event.{ActionEvent, EventHandler}
 import javafx.scene.Scene
 import javafx.scene.control.Button
-import javafx.scene.layout.StackPane
 import javafx.stage.Stage
 
 import scala.concurrent.Future
@@ -52,11 +52,5 @@ class FFXExample extends javafx.application.Application{
     Platform.runLater(new Runnable {
       override def run(): Unit = btn.fire()
     })
-  }
-}
-
-object FFXExample {
-  def main(args: Array[String]) {
-    Application.launch(classOf[FFXExample], args: _*)
   }
 }
